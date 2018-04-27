@@ -82,13 +82,7 @@ function returnCounter(value = 0) {
 // но не вышло
 
 function returnArgumentsArray () {
-    const arr = [];
-
-    for (var i = 0; i < arguments.length; i++) {
-        arr.push(arguments[i]);
-    }
-
-    return arr;
+    return [].slice.call(arguments, 0);
 }
 
 /*
