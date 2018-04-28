@@ -61,7 +61,7 @@ function returnFnResult(fn) {
  */
 function returnCounter(value = 0) {
 
-    return () => value = value + 1;
+    return () => ++value;
 }
 
 /*
@@ -101,9 +101,7 @@ function returnArgumentsArray () {
    console.log(newSum()) выведет 6
  */
 function bindFunction(fn, ...args) {
-    return function () {
-        return fn(...args)
-    };
+    return () => fn(...args);
 }
 
 export {
