@@ -17,7 +17,6 @@
    isAllTrue([100, 2, 3, 4, 5], n => n < 10) // вернет false
  */
 function isAllTrue(array, fn) {
-    // let error = true;
 
     if (array.length === 0 || Array.isArray(array) === false) {
         throw new Error('empty array');
@@ -26,23 +25,12 @@ function isAllTrue(array, fn) {
     }
 
     for (let i = 0; i < array.length; i++) {
-        if (fn(array[i]) === false) {
+        if (!fn(array[i])) {
             return false;
         }
     } 
-    //     try {
-    //         if (fn(array[i]) === false) {
-    //             throw new Error(false)
-    //         }
-    //     } catch (e) {
-    //         if (e.message) {
-    //             error = e.message;
-    //         }
-    //     }
-    // }
 
     return true;
-    // return error;
 }
 
 /*
@@ -68,7 +56,7 @@ function isSomeTrue(array, fn) {
         throw new Error('fn is not a function')
     }
     for (let i = 0; i < array.length; i++) {
-        if (fn(array[i]) === true) {
+        if (fn(array[i])) {
             return true;
         }
     }
