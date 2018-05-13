@@ -52,10 +52,10 @@ function prepend(what, where) {
 function findAllPSiblings(where) {
     let arr = [];
 
-    for (let i = 0; i < where.length - 1; i++) {
-        if ( where[i].nextElementSibling.tagName === 'P' && where[i] !== 'SCRIPT') {
+    for (let i = 0; i < where.children.length - 1; i++) {
+        if ( where.children[i].nextElementSibling.tagName === 'P') {
 
-            arr.push(where[i]);
+            arr.push(where.children[i]);
         } 
     }
     
@@ -82,7 +82,7 @@ function findAllPSiblings(where) {
 function findError(where) {
     var result = [];
 
-    for (var child of where.childNodes) {
+    for (var child of where.children) {
         if (child.tagName !== 'SCRIPT') {
             result.push(child.innerText);
         }
