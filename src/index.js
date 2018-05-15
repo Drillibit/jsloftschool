@@ -128,7 +128,7 @@ function deleteTextNodesRecursive(where) {
     let children = [...where.childNodes];
 
     for (let child of children) {
-        child.nodeType == 3
+        if (child.nodeType == 3) {
             where.removeChild(child);
         }
 
