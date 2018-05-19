@@ -27,6 +27,21 @@ const homeworkContainer = document.querySelector('#homework-container');
    homeworkContainer.appendChild(newDiv);
  */
 function createDiv() {
+    const elm = document.createElement('div');
+
+    elm.classList.add('draggable-div');
+    const randomNum = () => Math.floor(Math.random() * Math.floor(250));
+
+    elm.setAttribute('draggable', true);
+    elm.setAttribute('style', 
+        `height: ${randomNum()}px; 
+         width: ${randomNum()}px;
+         position: absolute;
+         top: ${randomNum()}px;
+         left: ${randomNum()}px;
+         background: rgb(${randomNum()}, ${randomNum()}, ${randomNum()});`);
+
+    return elm;
 }
 
 /*
