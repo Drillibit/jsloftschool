@@ -54,7 +54,7 @@ const displayData = (data, input) => {
             if (!input) {
                 dataRow(name, value);
             } else {
-                let res = filtered(name, input);
+                let res = filtered(name, value, input);
 
                 if (res) {
                     dataRow(name, value);
@@ -69,8 +69,9 @@ const dataRow = (name, value) => {
 
 };
 
-const filtered = (whole, part) => {
-    let res = whole.toLowerCase().includes(part.toLowerCase());
+const filtered = (wholeName, wholeValue, part) => {
+    let res = wholeName.toLowerCase().includes(part.toLowerCase()) || 
+              wholeValue.toLowerCase().includes(part.toLowerCase());
 
     return res;
 }
