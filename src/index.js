@@ -159,7 +159,34 @@ function deleteTextNodesRecursive(where) {
      texts: 3
    }
  */
+const col = {
+    tags: {},
+    classes: {},
+    texts: 0
+}
+
 function collectDOMStat(root) {
+
+    root.classList.forEach((prop) => {
+        col.classes[prop] = (col.classes[prop] || 0) + 1;
+    })
+
+    root.childNodes.forEach((tag) => {
+        if (tag.nodeName !== '#text') {
+            col.tags[tag.nodeName] = (col.tags[tag.nodeName] || 0) + 1;
+        }
+
+        if (tag.nodeName === '#text') {
+            col.texts = (col.texts || 0) + 1;
+        }
+
+        if (tag.childNodes.length > 0) {
+            collectDOMStat(tag);
+        }
+    })
+
+    return col;
+    
 }
 
 /*
