@@ -222,6 +222,35 @@ function collectDOMStat(root) {
    }
  */
 function observeChildNodes(where, fn) {
+
+    let obj = {};
+
+    const observer = new MutationObserver( mutations => {
+
+        mutations.forEach(function (mutation) {
+            let inserted = [];
+            let deleted = [];
+
+            for (let m of mutation.addedNodes) {
+                inserted.push(m);
+            }
+            for (let m of mutation.removedNodes) {
+                deleted.push(m);
+            }
+            if (inserted.length > 0) {
+                obj.type = 'insert';
+                obj.nodes = inserted;
+                fn(obj);
+            } else if (deleted.length > 0) {
+                obj.type = 'remove';
+                obj.nodes = deleted;
+                fn(obj);
+            }
+        });
+
+    });
+
+    observer.observe(where, { childList: true });
 }
 
 export {
